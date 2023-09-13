@@ -8,6 +8,9 @@ criando uma chave ssh local para usar nas diferentes regiões da AWS
         terraform plan
         terraform apply
 
+ssh -i terraform-aws ubuntu@ec2-3-90-151-175.compute-1.amazonaws.com
+
+
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs?product_intent=terraform#environment-variables
 
 
