@@ -12,3 +12,19 @@ resource "aws_instance" "dev" {
     Name = "dev-${count.index}"
   }
 }
+
+resource "aws_security_group" "acesso-ssh" {
+  name        = "acesso-ssh"
+  description = "Allow SSH inbound traffic"
+
+  ingress {
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = ["138.94.195.220/32"]
+  }
+
+  tags = {
+    Name = "ssh"
+  }
+}
