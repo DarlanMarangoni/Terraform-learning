@@ -1,8 +1,8 @@
 resource "aws_instance" "dev" {
   count         = 3
-  ami           = "ami-053b0d53c279acc90"
-  instance_type = "t2.micro"
-  key_name      = "terraform-aws"
+  ami           = var.amis.us-east-1
+  instance_type = var.instance_type
+  key_name      = var.key_name
   tags          = {
     Name = "dev-${count.index}"
   }
@@ -10,9 +10,9 @@ resource "aws_instance" "dev" {
 }
 
 resource "aws_instance" "dev4" {
-  ami           = "ami-053b0d53c279acc90"
-  instance_type = "t2.micro"
-  key_name      = "terraform-aws"
+  ami           = var.amis.us-east-1
+  instance_type = var.instance_type
+  key_name      = var.key_name
   tags          = {
     Name = "dev-4"
   }
@@ -21,9 +21,9 @@ resource "aws_instance" "dev4" {
 }
 
 resource "aws_instance" "dev5" {
-  ami           = "ami-053b0d53c279acc90"
-  instance_type = "t2.micro"
-  key_name      = "terraform-aws"
+  ami           = var.amis.us-east-1
+  instance_type = var.instance_type
+  key_name      = var.key_name
   tags          = {
     Name = "dev-5"
   }
@@ -32,11 +32,23 @@ resource "aws_instance" "dev5" {
 
 resource "aws_instance" "dev6" {
   provider      = aws.sa-east-1
-  ami           = "ami-0af6e9042ea5a4e3e"
-  instance_type = "t2.micro"
-  key_name      = "terraform-aws"
+  ami           = var.amis.sa-east-1
+  instance_type = var.instance_type
+  key_name      = var.key_name
   tags          = {
     Name = "dev-6"
+  }
+  vpc_security_group_ids = [aws_security_group.acesso-ssh-sa-east-1.id]
+  depends_on             = [aws_dynamodb_table.drms-dynamodb-table]
+}
+
+resource "aws_instance" "dev7" {
+  provider      = aws.sa-east-1
+  ami           = var.amis.sa-east-1
+  instance_type = var.instance_type
+  key_name      = var.key_name
+  tags          = {
+    Name = "dev-7"
   }
   vpc_security_group_ids = [aws_security_group.acesso-ssh-sa-east-1.id]
   depends_on             = [aws_dynamodb_table.drms-dynamodb-table]
