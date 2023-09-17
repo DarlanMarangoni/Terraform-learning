@@ -23,7 +23,20 @@ para remover algum recurso podemos fazer dede 3 maneiras
     2 - utilizando o terraform destroy (nesse caso todos os recursos declarados sao excluidos)
     3 - terraform destroy -target nome_do_recurso (nesse caso também devemos deletar no arquivo para evitar criar novamente)
 
+Na última aula aprendemos a salvar o terraform state no terraform cloud, adicionando o arquivo terraformrc na HOME do 
+nosso usuário para armazenar o token e criando o arquivo o arquivo remote-state.tf para salvar o estado na terraform 
+cloud
 
+terraform {
+    backend "remote" {
+        hostname = "app.terraform.io"
+        organization = "rmerceslabs"
+    
+        workspaces {
+          name = "aws-rmerceslabs"
+        }
+    }
+}
 
 
 
