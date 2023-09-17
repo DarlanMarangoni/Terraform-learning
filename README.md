@@ -16,6 +16,13 @@ terraform ...
 
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs?product_intent=terraform#environment-variables
 
+Removendo recursos da AWS
+
+para remover algum recurso podemos fazer dede 3 maneiras
+    1 - apagando o recurno no arquivo .tf e executando o comando terraform apply
+    2 - utilizando o terraform destroy (nesse caso todos os recursos declarados sao excluidos)
+    3 - terraform destroy -target nome_do_recurso (nesse caso também devemos deletar no arquivo para evitar criar novamente)
+
 
 
 
