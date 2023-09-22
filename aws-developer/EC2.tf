@@ -13,5 +13,6 @@ resource "aws_instance" "first_instance" {
   }
   user_data = file("script.sh")
 
-  vpc_security_group_ids = [aws_security_group.acesso-ssh.id, aws_security_group.acesso-http.id]
+  vpc_security_group_ids = [aws_security_group.acesso-ssh.id, aws_security_group.acesso-http.id, "sg-07f349a8a233d2790"]
+  iam_instance_profile = "DemoRoleForEC2"
 }
